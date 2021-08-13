@@ -1,0 +1,21 @@
+doctype html
+html 
+  head 
+    link(rel='stylesheet', href='/stylesheets/index-page.css')
+  body 
+    block header
+      div#navbar 
+        if currentUser
+          ul
+            li Welcome Back
+            li 
+              a(href='/post/new') New Message
+            li
+              a(href='/logout') Log Out
+        else
+          ul
+            li 
+              a(href='/sign-up') Sign Up 
+            li 
+              a(href='/log-in') Log In
+    block content

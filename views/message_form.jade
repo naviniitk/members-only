@@ -1,0 +1,14 @@
+extends index
+
+block content 
+  div
+    h1.title New Message 
+    div
+      form(method='POST', action='')
+        div.form-group 
+          label(for='title') Title
+          input.form-control(type='text', name='title', value=(message===undefined)? '':message.title)
+        div.form-group 
+          label(for='message') Message 
+          input.form-control(type='text', name='message', value=(message===undefined)? '':message.body)
+        input(type='submit' value='Create Message')

@@ -1,0 +1,9 @@
+extends index 
+
+block content 
+  each message in message_list 
+    .user-post 
+      h1 message.title 
+      p message.body 
+      h2 message.username
+      h3 message.createdAt

@@ -1,9 +1,13 @@
 extends index 
 
 block content 
-  each message in message_list 
-    .user-post 
-      h1 message.title 
-      p message.body 
-      h2 message.username
-      h3 message.createdAt
+  .message-container 
+    each message in message_list 
+      .user-post 
+        h1 #{message.title}
+        p #{message.body}
+        if currentUser && currentUser.member
+          h2 #{message.username}
+        else
+          h2 Anonymous
+        h3 #{message.date}

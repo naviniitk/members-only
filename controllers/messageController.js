@@ -22,7 +22,7 @@ exports.create_message_get = function(req, res, next) {
   return;
 };
 
-exports.create_message_post = [body('title', 'Title is required').trim().isLength({min: 1}).escape(),body('body', 'Message is required').trim().isLength({min: 1}).escape(), (req, res, next) => {
+exports.create_message_post = function(req, res, next) {
   const errors = validationResult(req);
   authenticateUser(req.user, res);
   if(!errors.isEmpty()){
@@ -46,7 +46,7 @@ exports.create_message_post = [body('title', 'Title is required').trim().isLengt
       }
     });
   }
-}]
+};
 
 const authenticateUser = (user, res) => {
   if(!user){

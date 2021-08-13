@@ -6,17 +6,19 @@ const Message = new Schema({
   title: { type: String, required: true },
   body: { type: String, required: true},
   username: { type: String, required: true },
-  createdAt: { type: String }
+  createdAt: { type: Date }
 });
 
-Message.virtual('time')
-  .get(function(){
-    return this.createdAt.getUTCHours().toString() + ':' + this.created_at.getUTCMinutes().toString() + ':' + this.created_at.getUTCSeconds().toString() ;
-  });
 
 Message.virtual('date')
   .get(function(){
-    return this.createdAt.toDateString();
+    return this.createdAt.toLocaleDateString("en-gb", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minutes: "2-digit",
+    });
   });
 
 Message.virtual('delurl')
